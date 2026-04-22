@@ -1,0 +1,90 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --black: #0a0a0a;
+  --white: #f2f0ed;
+  --gray-1: #141414;
+  --gray-2: #1e1e1e;
+  --gray-3: #2a2a2a;
+  --gray-4: #444;
+  --gray-5: #666;
+  --gray-6: #888;
+  --gray-7: #aaa;
+  --gray-8: #ccc;
+  --text: #f2f0ed;
+  --text-2: #999;
+  --text-3: #555;
+  --border: #222;
+  --border-2: #2e2e2e;
+  --font-display: 'Playfair Display', serif;
+  --font-body: 'Geist', 'DM Sans', sans-serif;
+  --font-mono: 'Geist Mono', 'JetBrains Mono', monospace;
+  --radius: 4px;
+  --radius-md: 8px;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--black);
+  color: var(--text);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* GRAIN OVERLAY */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.028;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 128px 128px;
+}
+
+a { color: inherit; text-decoration: none; }
+
+::selection { background: var(--gray-3); color: var(--white); }
+
+::-webkit-scrollbar { width: 1px; }
+::-webkit-scrollbar-track { background: var(--black); }
+::-webkit-scrollbar-thumb { background: var(--gray-3); }
+
+/* SCROLL REVEAL */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+.reveal-delay-5 { transition-delay: 0.5s; }
+
+/* CUSTOM CURSOR */
+*, *::before, *::after { cursor: none !important; }
+
+.cursor { width: 15px; height: 15px;
+  position: fixed;
+  
+  
+  background: var(--white);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99999;
+  transform: translate(-50%, -50%);
+  transition: transform 0.15s var(--ease), opacity 0.2s;
+  mix-blend-mode: difference;
+}
+.cursor--hidden { opacity: 0; }
