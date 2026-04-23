@@ -83,7 +83,7 @@ export default function Home() {
           Rishi Pabbathi
         </h1>
         <p className="hero-bio reveal reveal-delay-2">
-          I try to build and research intelligent systems
+          I try to research and build intelligent systems
         </p>
         <div className="hero-actions reveal reveal-delay-3">
           <Link to="/projects" className="btn btn-solid">View Projects</Link>
