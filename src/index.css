@@ -75,7 +75,7 @@ a { color: inherit; text-decoration: none; }
 /* CUSTOM CURSOR */
 *, *::before, *::after { cursor: none !important; }
 
-.cursor { width: 15px; height: 15px;
+.cursor { width: 10px; height: 10px;
   position: fixed;
   
   
